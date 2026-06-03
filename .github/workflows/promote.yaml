@@ -1,0 +1,23 @@
+name: promote
+
+on:
+  workflow_dispatch:
+    inputs:
+      from_channel:
+        description: "Source channel"
+        required: true
+        default: "latest/candidate"
+      to_channel:
+        description: "Target channel"
+        required: true
+        default: "latest/stable"
+
+jobs:
+  promote:
+    uses: canonical/robotics-actions-workflows/.github/workflows/promote.yaml@main
+    with:
+      snap: turtlesim
+      from-channel: ${{ inputs.from_channel }}
+      to-channel: ${{ inputs.to_channel }}
+    secrets:
+      snapstore-login: ${{ secrets.STORE_LOGIN }}
