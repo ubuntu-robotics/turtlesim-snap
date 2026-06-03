@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+# Force a robust desktop backend inside strict confinement.
+# kde-neon-6 may default to wayland-egl; fall back to xcb explicitly.
+export QT_QPA_PLATFORM=xcb
+
+exec "$SNAP/opt/ros/jazzy/lib/turtlesim/turtlesim_node" "$@"

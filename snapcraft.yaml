@@ -24,9 +24,7 @@ parts:
 
 apps:
   turtlesim:
-    command: opt/ros/jazzy/lib/turtlesim/turtlesim_node
-    environment:
-      QT_QPA_PLATFORM: xcb
+    command: snap/local/launch-turtlesim
     extensions:
       - ros2-jazzy
       - kde-neon-6
