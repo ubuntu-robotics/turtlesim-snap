@@ -1,4 +1,4 @@
-name: turtlesim-snap
+name: turtlesim
 base: core24
 version: '1.0.0'
 summary: ROS 2 turtlesim as a snap

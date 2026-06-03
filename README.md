@@ -11,13 +11,13 @@ snapcraft
 ## Install locally
 
 ```bash
-sudo snap install ./turtlesim-snap_*.snap --dangerous
+sudo snap install ./turtlesim_*.snap --dangerous
 ```
 
 ## Launch
 
 ```bash
-snap run turtlesim-snap.turtlesim
+snap run turtlesim.turtlesim
 ```
 
 ## Notes
