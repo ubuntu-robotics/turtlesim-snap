@@ -23,4 +23,4 @@ snap run turtlesim-snap.turtlesim
 ## Notes
 
 - This snap uses `core24` and the `ros2-jazzy` extension.
-- Because `turtlesim` is graphical, the app also uses the `gnome` extension and plugs `x11`, `wayland`, and `opengl`.
+- Because `turtlesim` is graphical, the app also uses the `kde-neon-6` extension and plugs `x11`, `wayland`, and `opengl`.
