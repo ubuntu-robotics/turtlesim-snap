@@ -17,6 +17,7 @@ jobs:
     with:
       runs-on: '["ubuntu-latest"]'
       snapcraft-source-subdir: "."
-      snap-track: jazzy
+      snap-track: latest
+      snap-risk: candidate
     secrets:
       snapstore-login: ${{ secrets.STORE_LOGIN }}

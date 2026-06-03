@@ -26,9 +26,3 @@ apps:
     extensions:
       - ros2-jazzy
       - kde-neon-6
-    plugs:
-      - network
-      - network-bind
-      - opengl
-      - wayland
-      - x11
