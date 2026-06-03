@@ -1,0 +1,34 @@
+name: turtlesim-snap
+base: core24
+version: '1.0.0'
+summary: ROS 2 turtlesim as a snap
+description: |
+  Snap package for the ROS 2 turtlesim graphical demo application.
+
+  This snap exposes an app entrypoint that launches turtlesim_node.
+license: BSD-3-Clause
+grade: stable
+confinement: strict
+
+platforms:
+  amd64:
+  arm64:
+
+parts:
+  turtlesim-runtime:
+    plugin: nil
+    stage-packages:
+      - ros-jazzy-turtlesim
+
+apps:
+  turtlesim:
+    command: opt/ros/jazzy/lib/turtlesim/turtlesim_node
+    extensions:
+      - ros2-jazzy
+      - gnome
+    plugs:
+      - network
+      - network-bind
+      - opengl
+      - wayland
+      - x11

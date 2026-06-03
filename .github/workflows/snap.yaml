@@ -1,0 +1,41 @@
+name: snap
+
+on:
+  push:
+    branches:
+      - jazzy
+    tags:
+      - 'jazzy/*'
+  pull_request:
+    branches:
+      - jazzy
+  workflow_dispatch:
+
+jobs:
+  snap:
+    uses: canonical/robotics-actions-workflows/.github/workflows/snap.yaml@main
+    with:
+      runs-on: '["ubuntu-latest"]'
+      snapcraft-source-subdir: "."
+      snap-track: jazzy
+      snap-test-script: |
+        #!/bin/bash
+        set -euxo pipefail
+
+        sudo apt-get update
+        sudo apt-get install -y xvfb
+
+        set +e
+        timeout 15s xvfb-run -a snap run turtlesim-snap.turtlesim
+        rc=$?
+        set -e
+
+        # timeout (124) means it launched and kept running.
+        if [ "$rc" -ne 124 ]; then
+          echo "turtlesim did not stay up under Xvfb (rc=$rc)"
+          exit 1
+        fi
+
+        echo "turtlesim launch test passed"
+    secrets:
+      snapstore-login: ${{ secrets.STORE_LOGIN }}

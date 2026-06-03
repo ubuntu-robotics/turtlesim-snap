@@ -1,0 +1,7 @@
+*.snap
+*.manifest
+*.debug
+parts/
+prime/
+stage/
+.build/
