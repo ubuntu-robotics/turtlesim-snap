@@ -20,10 +20,13 @@ parts:
     stage-packages:
       - ros-jazzy-turtlesim
       - qtwayland5
+      - libqt5waylandclient5
 
 apps:
   turtlesim:
-    command: usr/bin/env QT_QPA_PLATFORM=xcb opt/ros/jazzy/lib/turtlesim/turtlesim_node
+    command: opt/ros/jazzy/lib/turtlesim/turtlesim_node
+    environment:
+      QT_QPA_PLATFORM: xcb
     extensions:
       - ros2-jazzy
       - kde-neon-6
