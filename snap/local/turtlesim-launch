@@ -28,7 +28,14 @@ export QT_QPA_PLATFORM_PLUGIN_PATH="$qt_platform_plugins"
 # Suppress non-fatal desktop runtime noise from optional proxy/session modules.
 # Keep app behavior unchanged.
 unset GIO_EXTRA_MODULES
+unset SESSION_MANAGER
 export QT_NO_SESSION_MANAGER=1
+# Force GIO to use the snap runtime module dir only (avoid stale per-user cache module path).
+if [ -d "$SNAP/gnome-platform/usr/lib/x86_64-linux-gnu/gio/modules" ]; then
+  export GIO_MODULE_DIR="$SNAP/gnome-platform/usr/lib/x86_64-linux-gnu/gio/modules"
+elif [ -d "$SNAP/usr/lib/x86_64-linux-gnu/gio/modules" ]; then
+  export GIO_MODULE_DIR="$SNAP/usr/lib/x86_64-linux-gnu/gio/modules"
+fi
 
 # Wayland is default via desktop-launch, but some hosts fail to resolve plugin search path.
 # Force X11 backend for reliability.
