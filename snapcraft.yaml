@@ -15,12 +15,6 @@ platforms:
   arm64:
 
 parts:
-  launcher:
-    plugin: dump
-    source: .
-    organize:
-      snap/local/launch-turtlesim: bin/launch-turtlesim
-
   turtlesim-runtime:
     plugin: nil
     stage-packages:
@@ -30,7 +24,7 @@ parts:
 
 apps:
   turtlesim:
-    command: bin/launch-turtlesim
+    command: opt/ros/jazzy/lib/turtlesim/turtlesim_node
     extensions:
       - ros2-jazzy
-      - kde-neon-6
+      - gnome
