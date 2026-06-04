@@ -31,6 +31,10 @@ parts:
 apps:
   turtlesim:
     command: bin/turtlesim-launch
+    plugs:
+      - network
+      - network-bind
+      - shared-memory
     extensions:
       - ros2-jazzy
       - gnome
