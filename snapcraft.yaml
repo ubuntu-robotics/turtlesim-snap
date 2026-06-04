@@ -15,6 +15,12 @@ platforms:
   arm64:
 
 parts:
+  launcher:
+    plugin: dump
+    source: .
+    organize:
+      snap/local/turtlesim-launch: bin/turtlesim-launch
+
   turtlesim-runtime:
     plugin: nil
     stage-packages:
@@ -24,7 +30,7 @@ parts:
 
 apps:
   turtlesim:
-    command: opt/ros/jazzy/lib/turtlesim/turtlesim_node
+    command: bin/turtlesim-launch
     extensions:
       - ros2-jazzy
       - gnome
