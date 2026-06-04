@@ -25,6 +25,11 @@ for d in "$SNAP"/usr/lib/*/qt5/plugins/platforms "$SNAP"/gnome-platform/usr/lib/
 done
 export QT_QPA_PLATFORM_PLUGIN_PATH="$qt_platform_plugins"
 
+# Suppress non-fatal desktop runtime noise from optional proxy/session modules.
+# Keep app behavior unchanged.
+unset GIO_EXTRA_MODULES
+export QT_NO_SESSION_MANAGER=1
+
 # Wayland is default via desktop-launch, but some hosts fail to resolve plugin search path.
 # Force X11 backend for reliability.
 export QT_QPA_PLATFORM=xcb
